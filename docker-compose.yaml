@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  langhelper:
+    container_name: langhelper
+# OPTIONAL: IF YOU WANT BACKUP UNCOMMENT FOLLOWING LINES
+#    command:
+#      - "-backup"
+#      - "-backup-receiver"
+#      - "<telegram user id>"
+#      - "-backup-interval"
+#      - "24h0m0s"
+    image: sinashk/langhelper:latest
+    restart: always
+    volumes:
+      - ./data:/data
+# OPTIONAL: UNCOMMENT THIS IF YOU WANT TO PASS YOUR TOKEN HERE
+#      - BOT_TOKEN=<BOT_TOKEN>
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
